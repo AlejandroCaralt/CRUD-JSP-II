@@ -24,6 +24,6 @@ Un estudio de programación online donde se podran gestionar los proyecto open s
 ## SegundaEntrega -  El nuevo sistema de creación de proyecto esta solo implementada al usuario "admin". Se ha eliminado esta página.
 
 # Modificar Tabla de Proyectos
-<img src="img/PantallaPrincipalAdmin.png">
+<img src="img/PantallaAdmin.png">
 ## Las modificaciones y las eliminaciones no se guardan, he encontrado varios fallos que no he podido solventar.
 ## SegundaEntrega - El nuevo sistema de modificación de proyecto esta solo implementada al usuario "admin". Se ha eliminado esta página.
