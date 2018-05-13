@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,9 +40,14 @@ public class RegistroNuevo extends HttpServlet {
         String email = request.getParameter("email");
         
         Consultas co = new Consultas();
+        HttpSession objsession = request.getSession(true);
         if(co.registerUser(usuario, contraseña, email)){
-            response.sendRedirect("Index.jsp");
-        } 
+            response.sendRedirect("index.jsp");
+            objsession.setAttribute("alert", "añadiendousuario");
+        } else {
+            response.sendRedirect("RegistroUsuario.jsp");
+            objsession.setAttribute("alert", "errorañadiendousuario");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

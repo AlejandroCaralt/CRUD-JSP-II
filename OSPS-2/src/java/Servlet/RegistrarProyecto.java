@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,8 +42,12 @@ public class RegistrarProyecto extends HttpServlet {
         String descripcion = request.getParameter("descripcionProyecto");
         
         Consultas co = new Consultas();
+        HttpSession objsession = request.getSession(true);
+        response.sendRedirect("PantallaAdmin.jsp");
         if(co.registerProject(nombre,lenguaje,github,admin, descripcion)){
-            response.sendRedirect("PantallaAdmin.jsp");
+            objsession.setAttribute("alert", "añadiendoproyecto");
+        } else {
+            objsession.setAttribute("alert", "errorAñadiendoProyecto");
         }
     }
 

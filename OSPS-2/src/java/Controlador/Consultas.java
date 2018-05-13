@@ -136,20 +136,30 @@ public class Consultas extends Conexion{
      * @param projectID
      * @return HashMap of all Users in the project
      */
-    public HashMap<Integer, String> getProjectUsers(Integer projectID) {
-        HashMap<Integer, String> usuariosProyecto = new HashMap<Integer, String>();
+    public HashMap<Proyecto, ArrayList<Usuario>> getProjectUsers(Integer projectID) {
+        HashMap<Proyecto, ArrayList<Usuario>> usuariosProyecto = new HashMap<Proyecto, ArrayList<Usuario>>();
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        Proyecto proyectos = new Proyecto();
         PreparedStatement pst = null;
         ResultSet rs = null;
-        Integer codigo = 0;
         try{
-            String consulta ="SELECT userName FROM activeproject  WHERE projectID = ?";
+            String consulta ="SELECT P.projectID, P.nombreProyecto,P.lenguajeProyecto, P.github, P.adminProyecto, P.fechaInicio, P.descripcionProyecto, L.userName, L.email "
+                    + "FROM project P left join activeproject AP on P.projectID=AP.projectID inner join login L on AP.userName=L.userName  group by projectID, userName HAVING projectID = ?";
             pst = getConexion().prepareStatement(consulta);
             pst.setInt(1, projectID);
+            rs = pst.executeQuery();
             while(rs.next()) {
-                String usuario = rs.getString("UserName");
-                usuariosProyecto.put(codigo,usuario );
-                codigo++;
-            }  
+                proyectos.setProjectId(rs.getInt("projectID"));
+                proyectos.setNombreProyecto(rs.getString("nombreProyecto"));
+                proyectos.setLenguajeProyecto(rs.getString("lenguajeProyecto"));
+                proyectos.setGithub(rs.getString("github"));
+                proyectos.setAdminProyecto(rs.getString("adminProyecto"));
+                proyectos.setFechaInicio(rs.getDate("fechaInicio"));
+                proyectos.setDescripcionProyecto(rs.getString("descripcionProyecto"));
+                usuarios.add(new Usuario(rs.getString("UserName"),
+                rs.getString("email")));
+            }
+            usuariosProyecto.put(proyectos, usuarios);
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{

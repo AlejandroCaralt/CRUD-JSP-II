@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,6 +34,11 @@ public class BorrarProyecto extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
+        HttpSession objsession = request.getSession(true);
+        String usuario = (String)objsession.getAttribute("usuario");
+        if(usuario.equals("sesionCaducada")){
+            response.sendRedirect("./CerrarSesion");
+        }
         try{
             int codigo = Integer.valueOf(request.getParameter("projectID"));
         
@@ -40,6 +46,7 @@ public class BorrarProyecto extends HttpServlet {
         
             if(co.deleteProject(codigo)){
                 response.sendRedirect("PantallaAdmin.jsp");
+                objsession.setAttribute("alert", "borrandoProyecto");
             }
         }catch (Exception e){
             System.err.println("Error" + e);

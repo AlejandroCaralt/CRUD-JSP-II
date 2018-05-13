@@ -3,11 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/web/index.html</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Controlador/Proyecto.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Controlador/InnerHTML.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/RegistrarProyecto.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Controlador/Conexion.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Controlador/Consultas.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/web/PantallaAdmin.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/web/Proyecto.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/SuscribirseProyecto.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/InicioSesion.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/CerrarSesion.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/web/PaginaPrincipal.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/NuevoProyecto.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/web/PerfilUsuario.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/RegistrarUsuario.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Controlador/Proyecto.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/ModificarProyecto.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/BorrarProyecto.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/ModificarUsuario.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/web/RegistroUsuario.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/RegistroNuevo.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Controlador/Usuario.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/web/index.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/OSPS-2/src/java/Servlet/BorrarUsuario.java</file>
         </group>
     </open-files>
 </project-private>

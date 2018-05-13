@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -42,11 +43,12 @@ public class ModificarProyecto extends HttpServlet {
             String descripcion = request.getParameter("descripcionProyecto");
         
             Consultas co = new Consultas();
-            
+            HttpSession objsession = request.getSession(true);
+            response.sendRedirect("PantallaAdmin.jsp");
             if(co.updateProject(codigo, nombre, lenguaje, github, descripcion)){
-                response.sendRedirect("PantallaAdmin.jsp");
+                objsession.setAttribute("alert", "modificandoproyecto");
             } else {
-                response.sendRedirect("PantallaAdmin.jsp");
+                objsession.setAttribute("alert", "modificandoproyecto");
             }
         }catch (Exception e){
             System.err.println("Error" + e);

@@ -5,19 +5,19 @@
  */
 package Servlet;
 
-import Controlador.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Usuario
  */
-public class NuevoProyecto extends HttpServlet {
+public class CerrarSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,18 +32,15 @@ public class NuevoProyecto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
-        //String nombre
-        String nombre = request.getParameter("nombreProyecto");
-        String lenguaje = request.getParameter("lenguajeProyecto");
-        String github = request.getParameter("github");
-        String admin = request.getParameter("adminProyecto");
-        String descripcion = request.getParameter("descripcionProyecto");
-        
-        Consultas co = new Consultas();
-        if(co.registerProject(nombre,lenguaje,github,admin, descripcion)){
-            response.sendRedirect("PaginaPrincipal.jsp");
+        try{
+            response.sendRedirect("index.jsp");
+            HttpSession objsession = request.getSession(true);
+            objsession.setAttribute("usuario", "sesionCaducada");
+            objsession.setAttribute("alert", "sesionCerrada");
+        } catch(Exception e){
+            response.sendRedirect("index.jsp");
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

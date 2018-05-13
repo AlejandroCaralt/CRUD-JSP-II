@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-03-2018 a las 07:48:06
+-- Tiempo de generación: 11-05-2018 a las 07:23:46
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -33,6 +33,14 @@ CREATE TABLE `activeproject` (
   `userName` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `activeproject`
+--
+
+INSERT INTO `activeproject` (`projectID`, `userName`) VALUES
+(16, 'Carlos'),
+(23, 'luis');
+
 -- --------------------------------------------------------
 
 --
@@ -50,12 +58,11 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`userName`, `userPassword`, `email`) VALUES
-('admin', '1234', NULL),
-('administrador', '1234', NULL),
-('Alejandro', '1234', 'email@gmail.com'),
+('admin', '1234', ''),
 ('Carlos', '1234', 'carlos@gmail.com'),
 ('David', '1234', 'david@gmail.com'),
-('Luis', '1234', 'luis@gmail.com');
+('Luis', '1234', 'luis@gmail.com'),
+('Pepe', '1234', 'pepe@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -78,10 +85,11 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`projectID`, `nombreProyecto`, `lenguajeProyecto`, `github`, `adminProyecto`, `fechaInicio`, `descripcionProyecto`) VALUES
-(2, 'CRUD-JSP', 'JAVA- JSP- HTML- CSS- JS', 'https://github.com/AlejandroCaralt/CRUD-JSP', 'Alejandro', '2018-03-21 23:35:34', 'Estudio de programación de código abierto.'),
-(3, 'Prueba-1', 'HTML', '', NULL, '2018-03-22 00:43:46', ''),
-(5, 'Prueba-2', 'HTML', 'Github.com', NULL, '2018-03-22 00:58:00', 'Prueba de creacion de proyectos'),
-(10, 'Examen de ProgramaciÃ³n', 'Java', 'https://github.com/LuisJoseSanchez/github-alumnos-dam-1719', 'Luis', '2018-03-22 07:44:31', 'Examen para los suspensos-Segundo trimestre.');
+(14, 'Prueba1', 'C++', 'https://github.com/', NULL, '2018-05-11 03:16:50', 'Descripcion sobre el proyecto numero 1'),
+(16, 'Prueba2', 'C', 'https://github.com/es', NULL, '2018-05-11 03:17:55', 'Descripcion sobre el proyecto numero 2'),
+(22, 'Prueba3', 'Java', 'https://github.com/ess', NULL, '2018-05-11 03:45:41', 'Descripcion sobre el proyecto numero 3'),
+(23, 'Nuevo', 'Angular 5', 'https://github.com/es/es', 'admin', '2018-05-11 04:20:56', 'Descripcion sobre el proyecto 4'),
+(24, 'Nuevo-2', 'Angular JS', 'https://github.com/es/es/es', 'admin', '2018-05-11 06:52:28', 'Descripcion sobre el proyecto');
 
 --
 -- Índices para tablas volcadas
@@ -117,7 +125,7 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT de la tabla `project`
 --
 ALTER TABLE `project`
-  MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas

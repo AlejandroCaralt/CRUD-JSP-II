@@ -37,8 +37,8 @@
         <servlet-class>Servlet.RegistroNuevo</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NuevoProyecto</servlet-name>
-        <servlet-class>Servlet.NuevoProyecto</servlet-class>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>Servlet.CerrarSesion</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
@@ -77,8 +77,8 @@
         <url-pattern>/RegistroNuevo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>NuevoProyecto</servlet-name>
-        <url-pattern>/NuevoProyecto</url-pattern>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

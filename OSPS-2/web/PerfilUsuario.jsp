@@ -1,22 +1,14 @@
 <%-- 
-    Document   : PaginaPrincipal
-    Created on : 10-may-2018, 23:56:56
+    Document   : PerfilUsuario
+    Created on : 12-may-2018, 17:15:01
     Author     : Usuario
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Controlador.InnerHTML"%>
 <%
-    HttpSession objsession = request.getSession();
+    HttpSession objsession = request.getSession(false);
     String usuario = (String)objsession.getAttribute("usuario");
-    String type = (String)objsession.getAttribute("alert");
-    InnerHTML cp = new InnerHTML();
-    if(usuario.equals("sesionCaducada")){
-        response.sendRedirect("./CerrarSesion");
-    }
-    if(type == null){
-        type = "";
-    }
 %>
 <!DOCTYPE html>
 <html>
@@ -33,40 +25,29 @@
     <body class="text-center">
         <div>
             <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="PaginaPrincipal.jsp"><% out.print(usuario); %></a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="menu.jsp"><% out.print(usuario); %></a>
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="./CerrarSesion" >Cerrar Sesión</a>
+                    <a class="nav-link" href="./index.jsp" >Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
         <div>
-            <%= cp.alert(type) %>
-            <% objsession.setAttribute("alert", ""); %>
-        </div>
-        <div class="container" >
-            <h1 class="display-4 font-italic">Tabla de Proyectos</h1><br>
-            <%= cp.viewProjects(usuario)%>
-        </div>
-        
-        <div class="container center-text" >
-                <h1 class="display-4 font-italic">Tabla de Usuarios Registrados</h1><br>
-                <div>
-                    <%= cp.getViewUsuarios()%>
-                </div>
-        </div>
-        <div>
-            <div class="mt-5 mb-3 text-muted">
-                    Alejandro Caralt Caralt © 2018-2019
+            <div style="top: 100px; position: relative;">
+                <h1 class="display-4 font-italic">Tabla de Proyectos</h1><br>
+                <%InnerHTML cp = new InnerHTML();%>
+                <table class="table table-striped table-sm" border=1>
+                    <thead>
+                        <tr>
+                            <th>NickName</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <%= cp.getViewUsuarios()%> 
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
-    <script type="text/javascript">
-        window.setTimeout(function () {
-            $(".alert").fadeTo(500,0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 4000);
-    </script>
 </html>
-

@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,16 +34,20 @@ public class BorrarUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        try{
-            String usuario = request.getParameter("userName");
+        String usuarioLog = request.getParameter("userName");
+        HttpSession objsession = request.getSession(true);
+        String usuario = (String)objsession.getAttribute("usuario");
         
+        if(usuario.equals("sesionCaducada")){
+            response.sendRedirect("./CerrarSesion");
+        } else if(usuarioLog.toLowerCase().equals("admin")){
+            response.sendRedirect("./PantallaAdmin");
+        } else {
             Consultas co = new Consultas();
-        
-            if(co.deleteUser(usuario)){
+            if(co.deleteUser(usuarioLog)){
                 response.sendRedirect("PantallaAdmin.jsp");
-            } 
-        }catch (Exception e){
-            System.err.println("Error" + e);
+                objsession.setAttribute("alert", "borrandoUsuario");
+            }
         }
     }
 

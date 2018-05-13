@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Controlador.InnerHTML;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,38 +45,66 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+
+    HttpSession objsession = request.getSession();
+    String type = (String)objsession.getAttribute("alert");
+    InnerHTML cp = new InnerHTML();
+    if(type == null){
+        type = "";
+    }
+
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Iniciar Sesión</title>\n");
+      out.write("        <title>OSPStudio</title>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" integrity=\"sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB\" crossorigin=\"anonymous\">\n");
-      out.write("        <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n");
-      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\" integrity=\"sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49\" crossorigin=\"anonymous\"></script>\n");
-      out.write("        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js\" integrity=\"sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T\" crossorigin=\"anonymous\"></script>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.0.13/css/all.css\" integrity=\"sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp\" crossorigin=\"anonymous\">\n");
+      out.write("        <link rel=\"icon\" href=\"https://use.fontawesome.com/releases/v5.0.13/svgs/brands/osi.svg\" type=\"image/x-icon\"/>\n");
+      out.write("        <script src=\"https://code.jquery.com/jquery-3.2.1.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js\" integrity=\"sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4\" crossorigin=\"anonymous\"></script>\n");
+      out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js\" integrity=\"sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1\" crossorigin=\"anonymous\"></script>\n");
       out.write("    </head>\n");
-      out.write("    <body>\n");
+      out.write("    <body class=\"text-center\">\n");
+      out.write("        <br><br><br><br>\n");
+      out.write("        <h1 class=\"display-4 font-italic\">Open Source Programming Studio</h1><br><br>\n");
       out.write("        <div>\n");
-      out.write("            <h1>Open Source Programming Studio</h1>\n");
-      out.write("            <div>\n");
-      out.write("                <form action=\"InicioSesion\" method=\"POST\">\n");
-      out.write("                    <div>\n");
-      out.write("                        <label>Usuario</label>\n");
-      out.write("                        <input type=\"text\" placeholder=\"Admin\" name=\"userName\"><br>\n");
-      out.write("                        <label>Contraseña</label>\n");
-      out.write("                        <input type=\"password\" placeholder=\"1234\" name=\"userPassword\"><br>\n");
-      out.write("                        <button type=\"submit\"> Iniciar Sesión</button>\n");
-      out.write("                    </div>\n");
-      out.write("                </form>\n");
-      out.write("                <br>\n");
-      out.write("                <div>\n");
-      out.write("                    ¿Nó tienes cuenta aún?<a href=\"RegistroUsuario.jsp\">Registrarme</a>\n");
-      out.write("                </div>\n");
-      out.write("            </div>    \n");
-      out.write("            <p>Alejandro Caralt Caralt © 2018-2019</p>\n");
-      out.write("        </div>\n");
+      out.write("            ");
+      out.print( cp.alert(type) );
+      out.write("\n");
+      out.write("            ");
+ objsession.setAttribute("alert", ""); 
+      out.write("\n");
+      out.write("        </div><br><br><br>\n");
+      out.write("        <form class=\"form-signin\" action=\"InicioSesion\" method=\"POST\">\n");
+      out.write("            <label for=\"user\" class=\"sr-only\">Nombre</label>\n");
+      out.write("            <input id=\"user\" class=\"form-label-group\" placeholder=\"admin\" type=\"text\" name=\"userName\" required><br>\n");
+      out.write("            <label for=\"passw\" class=\"sr-only\">Contraseña</label>\n");
+      out.write("            <input id=\"passw\" class=\"form-label-group\" placeholder=\"1234\" type=\"password\" name=\"userPassword\" required><br><br><br>\n");
+      out.write("            <div class=\"boton\">\n");
+      out.write("                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Iniciar Sesión</button>\n");
+      out.write("            </div>\n");
+      out.write("            <div class=\"checkbox mb-3\"><br>\n");
+      out.write("        <label>\n");
+      out.write("            <input type=\"checkbox\" value=\"remember-me\" checked=\"checked\"> Recuérdame.\n");
+      out.write("        </label>\n");
+      out.write("      </div>\n");
+      out.write("        </form>\n");
+      out.write("        <br>\n");
+      out.write("        <div>¿Nó tienes cuenta aún?<a href=\"RegistroUsuario.jsp\">Registrate aquí</a></div>\n");
+      out.write("        <div ><p class=\"mt-5 mb-3 text-muted\">Alejandro Caralt Caralt © 2018-2019</p></div>\n");
       out.write("    </body>\n");
+      out.write("    <script type=\"text/javascript\">\n");
+      out.write("        window.setTimeout(function () {\n");
+      out.write("            $(\".alert\").fadeTo(500,0).slideUp(500, function () {\n");
+      out.write("                $(this).remove();\n");
+      out.write("            });\n");
+      out.write("        }, 4000);\n");
+      out.write("    </script>\n");
       out.write("</html>\n");
+      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

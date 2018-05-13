@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,11 +37,14 @@ public class SuscribirseProyecto extends HttpServlet {
             int codigo = Integer.valueOf(request.getParameter("projectID"));
             String nombre = request.getParameter("userName");
             Consultas co = new Consultas();
-            
+            HttpSession objsession = request.getSession(true);
+            objsession.setAttribute("id", codigo);
             if(co.suscribeUser(codigo, nombre)){
-                response.sendRedirect("PantallaPrincipal.jsp");
+                response.sendRedirect("Proyecto.jsp");
+                objsession.setAttribute("alert", "suscribirseProyecto");
             } else {
-                response.sendRedirect("PantallaPrincipal.jsp"); 
+                response.sendRedirect("Proyecto.jsp");
+                objsession.setAttribute("alert", "suscritoProyecto");
             }
         }catch (Exception e){
             System.err.println("Error" + e);

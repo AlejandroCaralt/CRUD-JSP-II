@@ -36,18 +36,21 @@ public class InicioSesion extends HttpServlet {
         
         String usuario = request.getParameter("userName");
         String contraseña = request.getParameter("userPassword");
-        
+                
         Consultas co = new Consultas();
+        HttpSession objsession = request.getSession(true);
         if(co.auttenticacion(usuario, contraseña)){
-            HttpSession objsession = request.getSession(true);
-            objsession.setAttribute("usuario", usuario);
-            if(usuario.equals("admin")){
+            objsession.setAttribute("usuario", usuario.toUpperCase());
+            if(usuario.toLowerCase().equals("admin")){
                 response.sendRedirect("PantallaAdmin.jsp");
+                objsession.setAttribute("alert", "administracion");
             }else {
                 response.sendRedirect("PaginaPrincipal.jsp");
+                objsession.setAttribute("alert", "loginCorrecto");
             }
         } else {
             response.sendRedirect("index.jsp");
+            objsession.setAttribute("alert", "loginErroneo");
         }
     }
 
