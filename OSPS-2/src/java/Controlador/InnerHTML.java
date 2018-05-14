@@ -67,7 +67,7 @@ public class InnerHTML {
                 + "<form action='RegistrarUsuario' method='POST'>"
                 + "<td><input class='form-control' type='text' placeholder='Nombre' name='userName' autocomplete='off' required></td>"
                 + "<td><input class='form-control' type='password' placeholder='Contraseña' name='userPassword' autocomplete='off' required></td>"
-                + "<td><input class='form-control' type='text' placeholder='email' name='email' autocomplete='off' required></td>"
+                + "<td><input class='form-control' type='email' placeholder='email' name='email' autocomplete='off' required></td>"
                 + "<td><button type='submit' value='Añadir'>Añadir</button></td>"
                 + "</form></tr>"
                 + "</tbody></table>";

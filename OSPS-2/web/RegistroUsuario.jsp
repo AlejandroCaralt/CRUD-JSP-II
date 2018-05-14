@@ -33,7 +33,7 @@
         <form class="form-signin" action="RegistroNuevo" method="POST">
             <input placeholder="NombreUsuario" type="text" name="userName"><br>
             <input placeholder="Password" type="password" name="userPassword"><br>
-            <input placeholder="Correo(Opcional)" type="text" name="email"><br>
+            <input placeholder="Correo(Opcional)" type="email" name="email"><br>
             <br>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
         </form>
