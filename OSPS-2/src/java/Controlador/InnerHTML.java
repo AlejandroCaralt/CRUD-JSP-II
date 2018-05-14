@@ -216,11 +216,16 @@ public class InnerHTML {
                         + "<strong>Nuevo Usuario Añadido Correctamente</strong><br> Bienvenido al Club"
                         + "</div>";
                 break;
-                
             case "errorañadiendousuario": 
                 htmlcode+= "<div class='alert alert-warning alert-dismissible fade show'>"
                         + "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>"
                         + "<strong>Ups!</strong><br> Parece que alguien ya se ha registrado con ese 'Nombre'"
+                        + "</div>";
+                break;
+            case "errorañadiendoproyecto": 
+                htmlcode+= "<div class='alert alert-warning alert-dismissible fade show'>"
+                        + "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>"
+                        + "<strong>Ups!</strong><br> Parece que ya hay un Proyecto con ese 'Nombre' intentalo con otro"
                         + "</div>";
                 break;
             case "administracion": 
