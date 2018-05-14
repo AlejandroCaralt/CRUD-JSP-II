@@ -48,7 +48,7 @@ public class ModificarProyecto extends HttpServlet {
             if(co.updateProject(codigo, nombre, lenguaje, github, descripcion)){
                 objsession.setAttribute("alert", "modificandoproyecto");
             } else {
-                objsession.setAttribute("alert", "modificandoproyecto");
+                objsession.setAttribute("alert", "errorañadiendoproyecto");
             }
         }catch (Exception e){
             System.err.println("Error" + e);
